@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **HTU Events App** and **Website** are platforms designed to help students at HTU (Hashemite University) discover, RSVP, and manage events organized by various clubs and organizations. The app provides a seamless experience for browsing events, while the website allows admins to add and manage events.
+The **HTU Events App** and **Website** are platforms designed to help students at HTU  discover, RSVP, and manage events organized by various clubs and organizations. The app provides a seamless experience for browsing events, while the website allows admins to add and manage events.
 
 This project includes:
 - A **React Native** mobile app for students.
@@ -17,14 +17,11 @@ This project includes:
 - **Event Discovery**: Browse upcoming events with details like date, time, location, and organizer.
 - **RSVP**: RSVP to events and view your RSVPs.
 - **Event Details**: View detailed information about each event, including descriptions and RSVP lists.
-- **Notifications**: Send notifications to users who RSVP'd to an event (admin-only feature).
-- **Sorting**: Sort events by club for easier navigation.
 
 ### Website
-- **Event Management**: Add, edit, and delete events.
+- **Event Management**: Add and edit events.
 - **Image Upload**: Upload event images directly from the website.
 - **RSVP Management**: View a list of users who RSVP'd to each event.
-- **Notifications**: Send notifications to RSVP'd users.
 
 ---
 
@@ -45,4 +42,35 @@ This project includes:
 - **Node.js**: For the server.
 - **Express**: For handling API routes.
 - **Multer**: For handling image uploads.
-- **CORS**: For enabling cross-origin requests.
+
+## Features Added
+
+### Mobile App
+- **Carousel View**: Events are displayed in a carousel for a better user experience.
+- **RSVP Functionality**: Users can RSVP to events, and admins can view RSVP lists.
+
+### Website
+- **Event Management**: Admins can add, edit, and delete events.
+- **Image Upload**: Admins can upload event images directly from the website.
+- **RSVP Management**: Admins can view a list of users who RSVP'd to each event.
+
+---
+
+## Screenshots
+
+### Mobile App
+| Login Screen | Home Screen | Event Details |
+|--------------|-------------|---------------|
+| ![Login Screen](screenshots/login.png) | ![Home Screen](screenshots/home.png) | ![Event Details](screenshots/details.png) |
+
+### Website
+| Event Management | Add Event | RSVP List |
+|------------------|-----------|-----------|
+| ![Event Management](screenshots/website-events.png) | ![Add Event](screenshots/add-event.png) | ![RSVP List](screenshots/rsvp-list.png) |
+
+---
+
+## Future Improvements
+- **User Authentication**: Add user authentication for secure access.
+- **Push Notifications**: Implement push notifications for real-time updates.
+- **Search Functionality**: Add a search bar to filter events by title or description.
