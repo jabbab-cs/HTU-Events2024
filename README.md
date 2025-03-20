@@ -61,12 +61,12 @@ This project includes:
 ### Mobile App
 | Login Screen | Home Screen | Event Details |
 |--------------|-------------|---------------|
-| ![Login Screen](screenshots/login.png) | ![Home Screen](screenshots/home.png) | ![Event Details](screenshots/details.png) |
+| ![Login Screen](Screenshots/login.png) | ![Home Screen](Screenshots/home.png) | ![Event Details](Screenshots/details.png) |
 
 ### Website
 | Event Management | Add Event | RSVP List |
 |------------------|-----------|-----------|
-| ![Event Management](screenshots/website-events.png) | ![Add Event](screenshots/add-event.png) | ![RSVP List](screenshots/rsvp-list.png) |
+| ![Event Management](Screenshots/website-events.png) | ![Add Event](Screenshots/add-event.png) | ![RSVP List](Screenshots/rsvp-list.png) |
 
 ---
 
