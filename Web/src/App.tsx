@@ -1,10 +1,9 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Card from "./components/Card";
 import AddEvent from "./components/AddEvent";
 import { Loader2 } from "lucide-react";
+import EventDetails from "./components/EventDetails";
 
 export interface Event {
   id: number;
@@ -14,8 +13,9 @@ export interface Event {
   time: string;
   location: string;
   description: string;
-  imageSrc: string; // URL of the image
-  imageFile?: File; // Optional file object for uploads
+  imageSrc: string;
+  imageFile?: File;
+  rsvps?: { name: string; studentId: string }[];
 }
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
@@ -32,7 +33,6 @@ function App() {
     day: "numeric",
   });
 
-  // Fetch events from the backend
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -76,7 +76,7 @@ function App() {
 
       const response = await fetch("http://localhost:3000/api/events", {
         method: "POST",
-        body: formData, // Send FormData instead of JSON
+        body: formData,
       });
 
       if (!response.ok) {
@@ -91,8 +91,16 @@ function App() {
     }
   };
 
-  // Render content based on the current page
   const renderContent = () => {
+    if (selectedEvent) {
+      return (
+        <EventDetails
+          event={selectedEvent}
+          onBack={() => setSelectedEvent(null)}
+        />
+      );
+    }
+
     if (currentPage === "home") {
       return (
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -111,14 +119,16 @@ function App() {
             </div>
           ) : events.length === 0 ? (
             <div className="bg-gray-50 border border-gray-200 rounded-md p-6 text-center">
-              <p className="text-gray-600">
-                No events found. Add your first event!
-              </p>
+              <p className="text-gray-600">No events found.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {events.map((event) => (
-                <Card key={event.id} {...event} />
+                <Card
+                  key={event.id}
+                  {...event}
+                  Click={() => setSelectedEvent(event)}
+                />
               ))}
             </div>
           )}

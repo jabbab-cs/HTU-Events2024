@@ -34,9 +34,9 @@ const MainTabNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "#e8343f",
-        tabBarInactiveTintColor: "#ffffff",
+        tabBarInactiveTintColor: "gray",
         tabBarStyle: {
-          backgroundColor: "#474747",
+          backgroundColor: "#ffffff",
         },
       }}
     >

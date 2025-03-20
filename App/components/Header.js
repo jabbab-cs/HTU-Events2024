@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#e8343f",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
   },
   logoImage: {
     resizeMode: "contain",

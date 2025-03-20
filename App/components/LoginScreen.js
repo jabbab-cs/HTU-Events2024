@@ -7,11 +7,12 @@ import {
   Button,
   Alert,
   Image,
+  ImageBackground,
 } from "react-native";
 
 const LoginScreen = ({ navigation }) => {
   const validUser = {
-    email: "john.doe@htu.edu",
+    email: "24110681@htu.edu.jo",
     password: "secret123",
   };
 
@@ -27,34 +28,41 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+    <ImageBackground
+      source={require("../images/bg.png")}
+      style={styles.background}
+    >
+      <View style={styles.container}>
+        <View style={styles.bubble}>
+          <Text style={styles.title}>Login</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            value={email}
+            onChangeText={setEmail}
+          />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        value={email}
-        onChangeText={setEmail}
-      />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
+          <View style={styles.buttonContainer}>
+            <Button title="Log In" onPress={handleLogin} color="#fff" />
+          </View>
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <Button title="Log In" onPress={handleLogin} color="#fff" />
+        <Image
+          source={require("../images/HTUm.png")}
+          style={styles.logoImage}
+        />
       </View>
-      <Image
-        source={require("../images/HTUevents.png")}
-        style={styles.logoImage}
-      />
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -63,7 +71,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#ffffff",
     padding: 20,
     marginTop: -200,
   },
@@ -93,6 +100,20 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     width: "30%",
     height: "30%",
+  },
+  background: {
+    flex: 1,
+  },
+  bubble: {
+    width: "90%",
+    backgroundColor: "#fff", // White background for the form
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    alignItems: "center",
   },
 });
 

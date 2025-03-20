@@ -13,12 +13,7 @@ exports.getEventById = (req, res) => {
 exports.createEvent = (req, res) => {
   const { title, clubName, date, time, location, description } = req.body;
 
-  // Check if an image was uploaded
-  if (!req.file) {
-    return res.status(400).json({ error: "No image file uploaded" });
-  }
-
-  const imageSrc = `/images/${req.file.filename}`; // Path to the uploaded image
+  const imageSrc = `/images/${req.file.filename}`;
 
   const newEvent = {
     id: events.length > 0 ? Math.max(...events.map((e) => e.id)) + 1 : 1,
@@ -28,7 +23,8 @@ exports.createEvent = (req, res) => {
     time,
     location,
     description,
-    imageSrc, // Include the image path in the event data
+    imageSrc,
+    rsvps: [],
   };
 
   events.push(newEvent);
@@ -45,4 +41,31 @@ exports.deleteEvent = (req, res) => {
   }
 
   res.json({ message: "Event deleted successfully" });
+};
+
+exports.addRSVP = (req, res) => {
+  const eventId = Number.parseInt(req.params.id);
+  const { name, studentId } = req.body;
+  const event = events.find((e) => e.id === eventId);
+  if (!event) {
+    return res.status(404).json({ error: "Event not found" });
+  }
+  const hasRSVPd = event.rsvps.some((rsvp) => rsvp.studentId === studentId);
+
+  if (hasRSVPd) {
+    return res.status(400);
+  }
+
+  event.rsvps.push({ name, studentId });
+  res.status(200).json({ message: "RSVP added successfully" });
+};
+
+exports.getRSVPs = (req, res) => {
+  const eventId = Number.parseInt(req.params.id);
+  const event = events.find((e) => e.id === eventId);
+
+  if (!event) {
+    return res.status(404).json({ error: "Event not found" });
+  }
+  res.json(event.rsvps);
 };

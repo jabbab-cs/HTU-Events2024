@@ -3,10 +3,15 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 const ProfileScreen = ({ navigation }) => {
   const user = {
-    name: "John Doe",
-    studentId: "123456",
-    email: "johndoe@htu.edu",
+    name: "Mohammad Jarrar",
+    email: "24110681@htu.edu.jo",
   };
+
+  const extractStudentNumber = (email) => {
+    return email.split("@")[0];
+  };
+
+  const studentId = extractStudentNumber(user.email);
 
   const handleLogout = () => {
     navigation.replace("Login");
@@ -16,7 +21,7 @@ const ProfileScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Profile</Text>
       <Text style={styles.info}>Name: {user.name}</Text>
-      <Text style={styles.info}>Student ID: {user.studentId}</Text>
+      <Text style={styles.info}>Student ID: {studentId}</Text>
       <Text style={styles.info}>Email: {user.email}</Text>
 
       <View>

@@ -4,7 +4,7 @@ const EventCard = ({ event, onPress }) => {
   return (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://172.20.10.4:3000${event.imageSrc}` }}
+        source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
         style={styles.image}
       />
       <Text style={styles.cardTitle}>{event.title}</Text>{" "}
@@ -21,33 +21,36 @@ const EventCard = ({ event, onPress }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "#ffffff",
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 15,
     marginBottom: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   cardTitle: {
-    fontSize: 18,
-    color: "red",
+    fontSize: 25,
+    color: "#e8343f",
     fontWeight: "bold",
   },
   image: {
     width: "100%",
-    height: 150,
+    height: 600,
     borderRadius: 8,
     marginBottom: 10,
   },
   button: {
     marginTop: 10,
-    backgroundColor: "white",
+    backgroundColor: "#e8343f",
     padding: 10,
     borderRadius: 5,
     alignItems: "center",
-    borderWidth: 2,
-    borderColor: "red",
+    height: 40,
   },
   buttonText: {
-    color: "red",
+    color: "white",
     fontWeight: "bold",
   },
 });

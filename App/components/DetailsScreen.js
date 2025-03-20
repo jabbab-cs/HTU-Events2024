@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+
 import {
   View,
   Text,
@@ -6,39 +8,61 @@ import {
   StyleSheet,
   Image,
   Alert,
+  ScrollView,
 } from "react-native";
 
 const DetailsScreen = ({ route }) => {
   const { event, category } = route.params;
-  const description =
-    "This event offers a great opportunity to engage, learn, and connect with peers. Don't miss out!";
-  const rsvps = 42;
 
-  const handleBack = () => {
-    navigation.goBack();
+  const user = {
+    name: "Mohammad Jarrar",
+    studentId: "24110681",
+  };
+
+  const handleRSVP = async () => {
+    try {
+      const response = await axios.post(
+        `http://192.168.1.6:3000/api/events/${event.id}/rsvp`,
+        {
+          name: user.name,
+          studentId: user.studentId,
+        }
+      );
+
+      if (response.status === 200) {
+        Alert.alert("RSVP Submitted!");
+      }
+    } catch (error) {
+      console.error("Error submitting RSVP:", error);
+      Alert.alert("Error", "Failed to submit RSVP. Please try again.");
+
+      if (error.response?.status === 400) {
+        Alert.alert("Error", "You have already RSVP'd for this event.");
+      }
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={{ uri: `http://172.20.10.4:3000${event.imageSrc}` }}
-        style={styles.image}
-      />
-      <Text style={styles.detailsTitle}>{event.title}</Text>
-      <Text style={styles.detailsText}>Organizing Club: {event.clubName}</Text>
-      <Text style={styles.detailsText}>Category: {category}</Text>
-      <Text style={styles.detailsText}>Date & Day: {event.date}</Text>
-      <Text style={styles.detailsText}>Time: {event.time}</Text>
-      <Text style={styles.detailsText}>Location: {event.location}</Text>
-      <Text style={styles.detailsText}>Description: {description}</Text>
-      <Text style={styles.detailsText}>Number of RSVPs: {rsvps}</Text>
-      <TouchableOpacity
-        style={styles.rsvpButton}
-        onPress={() => Alert.alert("RSVP Submitted!")}
-      >
-        <Text style={styles.buttonText}>RSVP</Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Image
+          source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
+          style={styles.image}
+        />
+        <Text style={styles.detailsTitle}>{event.title}</Text>
+        <Text style={styles.detailsText}>
+          Organizing Club: {event.clubName}
+        </Text>
+        <Text style={styles.detailsText}>Category: {category}</Text>
+        <Text style={styles.detailsText}>Date & Day: {event.date}</Text>
+        <Text style={styles.detailsText}>Time: {event.time}</Text>
+        <Text style={styles.detailsText}>Location: {event.location}</Text>
+        <Text style={styles.detailsText}>Description: {event.description}</Text>
+        <TouchableOpacity style={styles.rsvpButton} onPress={handleRSVP}>
+          <Text style={styles.buttonText}>RSVP</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -51,7 +75,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 200,
+    height: 700,
     borderRadius: 8,
     marginBottom: 15,
   },

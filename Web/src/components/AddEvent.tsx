@@ -39,8 +39,8 @@ const AddEvent = ({
       time,
       location,
       description,
-      imageSrc: "", // Temporary empty string (will be updated by the backend)
-      imageFile: imageFile || undefined, // Pass the image file
+      imageSrc: "",
+      imageFile: imageFile || undefined,
     };
 
     onSubmit(newEvent);

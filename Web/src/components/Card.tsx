@@ -5,6 +5,7 @@ interface CardProps {
   time: string;
   location: string;
   imageSrc: string;
+  Click: () => void;
 }
 
 const Card = ({
@@ -14,9 +15,13 @@ const Card = ({
   time,
   location,
   imageSrc,
+  Click,
 }: CardProps) => {
   return (
-    <div className="border border-gray-200 rounded-lg flex flex-col sm:flex-row gap-4 p-4 hover:shadow-sm transition-shadow bg-white">
+    <div
+      className="border border-gray-200 rounded-lg flex flex-col sm:flex-row gap-4 p-4 hover:shadow-sm transition-shadow bg-white hover:bg-gray-50 hover:translate-y-[-10px]"
+      onClick={Click}
+    >
       <img
         src={"http://localhost:3000" + imageSrc}
         alt={title}
