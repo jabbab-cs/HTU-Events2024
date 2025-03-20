@@ -22,7 +22,7 @@ const DetailsScreen = ({ route }) => {
   const handleRSVP = async () => {
     try {
       const response = await axios.post(
-        `http://192.168.1.6:3000/api/events/${event.id}/rsvp`,
+        `http://urIP:3000/api/events/${event.id}/rsvp`,
         {
           name: user.name,
           studentId: user.studentId,
@@ -46,7 +46,7 @@ const DetailsScreen = ({ route }) => {
     <ScrollView>
       <View style={styles.container}>
         <Image
-          source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
+          source={{ uri: `http://UrIP:3000${event.imageSrc}` }}
           style={styles.image}
         />
         <Text style={styles.detailsTitle}>{event.title}</Text>

@@ -4,7 +4,7 @@ const EventCard = ({ event, onPress }) => {
   return (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
+        source={{ uri: `http://urIP:3000${event.imageSrc}` }}
         style={styles.image}
       />
       <Text style={styles.cardTitle}>{event.title}</Text>{" "}
