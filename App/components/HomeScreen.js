@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://192.168.1.6:3000/api/events");
+        const response = await axios.get("http://172.20.10.4:3000/api/events");
         setEvents(response.data);
       } catch (error) {
         console.error("Error fetching events:", error);
@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }) => {
     };
 
     fetchEvents();
-  }, []);
+  }, [events]);
 
   if (loading) {
     return (
@@ -44,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <View>
         <Text style={styles.header}>All Events</Text>
-        {events.length === 0 ? ( // Check if there are no events
+        {events.length === 0 ? (
           <View style={styles.noEventsContainer}>
             <Text style={styles.noEventsText}>
               No events found. Add your first event!
@@ -71,11 +71,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     paddingTop: 35,
+    marginTop: -35,
   },
   header: {
     fontSize: 22,
     fontWeight: "bold",
-    marginVertical: 10,
+    marginVertical: 20,
   },
   noEventsContainer: {
     backgroundColor: "#f3f4f6",

@@ -21,7 +21,7 @@ const DetailsScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       <Image
-        source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
+        source={{ uri: `http://172.20.10.4:3000${event.imageSrc}` }}
         style={styles.image}
       />
       <Text style={styles.detailsTitle}>{event.title}</Text>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "100%",
+    height: 200,
     borderRadius: 8,
     marginBottom: 15,
   },

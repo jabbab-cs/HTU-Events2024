@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-
 const EventCard = ({ event, onPress }) => {
   return (
     <View style={styles.card}>
       <Image
-        source={{ uri: `http://192.168.1.6:3000${event.imageSrc}` }}
+        source={{ uri: `http://172.20.10.4:3000${event.imageSrc}` }}
         style={styles.image}
       />
       <Text style={styles.cardTitle}>{event.title}</Text>{" "}

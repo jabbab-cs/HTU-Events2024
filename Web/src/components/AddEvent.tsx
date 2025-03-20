@@ -174,7 +174,7 @@ const AddEvent = ({
               <div className="flex justify-end">
                 <Button
                   type="submit"
-                  className="px-8 py-2.5 bg-black hover:bg-gray-800 text-white"
+                  className="px-8 py-2.5 bg-red-500 hover:bg-red-800 text-white"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Creating Event..." : "Create Event"}
