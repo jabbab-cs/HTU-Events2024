@@ -8,13 +8,16 @@ import SplashScreen from "./components/SplashScreen";
 import LoginScreen from "./components/LoginScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
+import HeaderBar from "./components/Header";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeStack = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: true, header: () => null }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: true, header: () => <HeaderBar /> }}
+    >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen
         name="Details"
@@ -27,7 +30,16 @@ const HomeStack = () => {
 
 const MainTabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#e8343f",
+        tabBarInactiveTintColor: "#ffffff",
+        tabBarStyle: {
+          backgroundColor: "#474747",
+        },
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={HomeStack}
