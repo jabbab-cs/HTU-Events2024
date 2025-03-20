@@ -1,5 +1,13 @@
 # HTU Events App & Website
 
+##Video Link
+
+https://youtu.be/t2qE9_ECHDo
+
+---
+
+Before using please make sure to put ur IP in the react native app scripts(Homescreen,DetailsScreen, and EventCard for backend to work)
+
 ## Overview
 
 The **HTU Events App** and **Website** are platforms designed to help students at HTU  discover, RSVP, and manage events organized by various clubs and organizations. The app provides a seamless experience for browsing events, while the website allows admins to add and manage events.
