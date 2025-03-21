@@ -1,6 +1,6 @@
 # HTU Events App & Website
 
-##Video Link
+## Video Link
 
 https://youtu.be/t2qE9_ECHDo
 
