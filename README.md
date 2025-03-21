@@ -8,6 +8,9 @@ https://youtu.be/t2qE9_ECHDo
 
 Before using please make sure to put ur IP in the react native app scripts(Homescreen,DetailsScreen, and EventCard for backend to work)
 
+to login to the app use 24110681@htu.edu.jo
+and password is secret123
+
 ## Overview
 
 The **HTU Events App** and **Website** are platforms designed to help students at HTU  discover, RSVP, and manage events organized by various clubs and organizations. The app provides a seamless experience for browsing events, while the website allows admins to add and manage events.
